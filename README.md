@@ -32,7 +32,7 @@ $ npm install
 $ npm run dev
 ```
 ### Project Structure
-
+```
 .
 ├── build/                      # webpack config files
 │   └── ...
@@ -70,7 +70,7 @@ $ npm run dev
 ├── package.json                # build scripts and dependencies
 └── README.md                   # Default README file
 
-
+```
 ### 引入 Element
 [guide](https://element.eleme.cn/#/zh-CN/component/quickstart) 
 
