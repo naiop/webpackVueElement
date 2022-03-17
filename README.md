@@ -77,7 +77,7 @@ $ npm run dev
 你可以引入整个 Element，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 Element。
 完整引入
 在 main.js 中写入以下内容：
-
+```
 import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -89,9 +89,9 @@ new Vue({
   el: '#app',
   render: h => h(App)
 });
+```
 
 
 
 
-
-# 学习视频 https://www.bilibili.com/video/BV1sW411A7vP?p=1
+### 学习视频 https://www.bilibili.com/video/BV1sW411A7vP?p=1
