@@ -7,9 +7,14 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import axios from 'axios'
+
 Vue.config.productionTip = false
 
-Vue.use(ElementUI)
+Vue.use(ElementUI) // 引入 axios
+Vue.prototype.$http = axios.create({ // 将 axios方法定义到vue的原型上
+  baseURL: 'http://127.0.0.1:3000/api' // 基础url，前端发起请求要先拼接上这个地址
+})
 
 /* eslint-disable no-new */
 new Vue({
