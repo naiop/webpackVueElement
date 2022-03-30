@@ -1,21 +1,37 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
-import main from '../views/main.vue'
-import login from '../views/login.vue'
-import test from '../views/mainActicty/test.vue'
 // import HelloWorld from '@/components/HelloWorld'
-// import test from '@/components/test'
+// import test from '../views/MainActivity/test.vue'
+// 分别引入三个 view
+import ListArticle from '../views/MainActivity/ListArticle.vue'
+import CreateArticle from '../views/MainActivity/CreateArticle.vue'
+import EditArticle from '../views/MainActivity/EditArticle.vue'
+import layout from '../views/layout.vue'
+import login from '../views/login.vue'
 
 Vue.use(Router)
+
 const routes = [
   {path: '/login', name: 'login', component: login, meta: {ispublic: true}},
   {path: '/',
-    name: 'main',
-    component: main,
+    name: 'layout',
+    component: layout,
     children: [
-      { path: '', name: 'numbering', component: test }
-
+      {
+        path: '/article/index',
+        name: 'List-article',
+        component: ListArticle
+      },
+      {
+        path: '/article/create',
+        name: 'create-article',
+        component: CreateArticle
+      },
+      {
+        path: '/article/:id/edit',
+        name: 'edit-article',
+        component: EditArticle
+      }
     ]
   }
 ]

@@ -8,11 +8,11 @@ const mysql = require('mysql') // 调用 MySQL模块
 
 // 创建连接
 var db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', // 用户名
-  password: '123456', // 密码
-  database: 'Article', // 数据库名
-  port: 3306 // 端口号
+  host: '47.103.68.175',
+  user: 'sa', // 用户名
+  password: 'Zkjz@123', // 密码
+  database: 'admin', // 数据库名
+  port: 1433 // 端口号
 })
 db.connect((err) => {
   if (err) throw err
@@ -39,6 +39,7 @@ app.post('/api/article', (req, res) => {
 
 // 获取文章列表
 app.get('/api/article', (req, res) => {
+  console.log('12311')
   let sql = 'SELECT * FROM posts'
   db.query(sql, (err, result) => {
     if (err) {
