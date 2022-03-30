@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Cookies from 'js-cookie' // 引用
 // import HelloWorld from '@/components/HelloWorld'
 // import test from '../views/MainActivity/test.vue'
 // 分别引入三个 view
@@ -39,14 +40,16 @@ const routes = [
 const router = new Router({
   routes
 })
-// 登录狗子
-// router.beforeEach((to, Form, next) => {
-//   // console.log(to)
-//   if (!to.meta.ispublic && !localStorage.admin_jwt_token) {
-//     return next('/login')
-//   }
-//   next()
-// })
+// 全局路由守卫   登录勾子
+router.beforeEach((to, Form, next) => {
+  console.log(to)
+  console.log(Cookies.get('token'))
+
+  if (!to.meta.ispublic && !localStorage.token) {
+    return next('/login')
+  }
+  next()
+})
 export default router
 
 // export default new Router({

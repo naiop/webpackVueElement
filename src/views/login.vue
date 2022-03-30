@@ -1,6 +1,5 @@
 <template>
   <div id="login" style="    width: 100%;height: 100%;">
-    <loginparticles />
     <div class="login-box">
       <p class="title">管理系统</p>
       <form action id="form" @submit.prevent="onSubmit">
@@ -21,12 +20,11 @@
   </div>
 </template>
 <script>
-import loginparticles from '@/views/loginparticles.vue'
 
 export default {
   name: 'login',
   components: {
-    loginparticles
+
   },
   data () {
     return {
@@ -42,7 +40,9 @@ export default {
         this.$message.error('账号或者密码为空')
         return
       }
-      this.$router.push('/views/main')
+      // 再这写个请求 把值存入
+      localStorage.setItem('token', JSON.stringify(this.password))
+      this.$router.push('/')
       this.$message.success('login')
     }
   }
