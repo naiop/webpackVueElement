@@ -29,11 +29,17 @@ export default {
   data () {
     return {
       password: '123456',
-      username: '123455'
+      username: '123456',
+      userData: []
     }
   },
   methods: {
 
+    getuser () {
+      this.$http.get('/userlogin').then(res => {
+        this.userData = res.data
+      })
+    },
     // 登录
     login () {
       if (this.password === '' || this.password === '') {
@@ -41,9 +47,16 @@ export default {
         return
       }
       // 再这写个请求 把值存入
-      localStorage.setItem('token', JSON.stringify(this.password))
-      this.$router.push('/')
-      this.$message.success('login')
+      this.$http.get(`/userlogin/${this.username}`).then(res => {
+        this.userData = res.data
+        console.log(this.userData)
+        if (this.userData.length > 0) {
+          localStorage.setItem('token', this.userData)
+          console.log(localStorage.getItem('token'))
+          this.$router.push('/')
+          this.$message.success('login')
+        }
+      })
     }
   }
 }
